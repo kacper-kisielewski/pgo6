@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Student {
     private static int studentNumberCount = 1;
@@ -11,6 +13,7 @@ public class Student {
     private Date dateOfBirth;
     private String studentNumber;
     private StudyProgramme assignedProgramme;
+    private ArrayList<Subject> assignedSubjects = new ArrayList<>();
 
     public Student(String fname, String lname, String email, String address, String phoneNumber, Date dateOfBirth) {
         this.fname = fname;
@@ -30,6 +33,20 @@ public class Student {
 
     public void enrollStudent(StudyProgramme programme) {
         assignedProgramme = programme;
+    }
+    private boolean isSubjectAssignedByName(String subjectName) {
+        for (Subject subject :assignedSubjects)
+            if (subject.name == subjectName)
+                return true;
+        return false;
+    }
+
+    private getSubjectByName () {}
+
+    public void addGrade(int grade, String subjectName) {
+        if (isSubjectAssignedByName(subjectName)) {
+
+        }
     }
 
     public String getFname() {

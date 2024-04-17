@@ -1,6 +1,6 @@
 public class StudyProgramme {
-    private String name;
-    private String description;
+    String name;
+    String description;
     private int numberOfSemesters;
     private int numberOfPossibleITNs;
 
