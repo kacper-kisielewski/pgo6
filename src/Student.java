@@ -2,6 +2,7 @@ import java.util.Date;
 
 public class Student {
     private static int studentNumberCount = 1;
+    private final int currentSemester = 1;
     private String fname;
     private String lname;
     private String email;
@@ -21,9 +22,14 @@ public class Student {
         generateStudentNumber();
     }
 
+
     private void generateStudentNumber() {
         studentNumber = "s" + Student.studentNumberCount;
         Student.studentNumberCount++;
+    }
+
+    public void enrollStudent(StudyProgramme programme) {
+        assignedProgramme = programme;
     }
 
     public String getFname() {
@@ -66,6 +72,16 @@ public class Student {
         this.phoneNumber = phoneNumber;
     }
 
+    public StudyProgramme getAssignedProgramme() {
+        return assignedProgramme;
+    }
+
+    public int getCurrentSemester() throws IllegalStateException {
+        if (assignedProgramme == null)
+            throw new IllegalStateException("Student is not in any programme");
+        return currentSemester;
+    }
+
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
@@ -73,4 +89,5 @@ public class Student {
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
 }
