@@ -9,6 +9,7 @@ public class Student {
     private String phoneNumber;
     private Date dateOfBirth;
     private String studentNumber;
+    private StudyProgramme assignedProgramme;
 
     public Student(String fname, String lname, String email, String address, String phoneNumber, Date dateOfBirth) {
         this.fname = fname;
@@ -17,6 +18,7 @@ public class Student {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
+        generateStudentNumber();
     }
 
     private void generateStudentNumber() {
