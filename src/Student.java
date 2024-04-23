@@ -3,8 +3,8 @@ import java.util.Date;
 
 public class Student {
     private static int studentNumberCount = 1;
-    private final int currentSemester = 1;
-    private final ArrayList<Grade> grades = new ArrayList<Grade>();
+    private int currentSemester = 1;
+    private ArrayList<Grade> grades = new ArrayList<Grade>();
     private String fname;
     private String lname;
     private String email;
