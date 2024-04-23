@@ -7,7 +7,6 @@ public class Main {
         s.enrollStudent(it);
         s.addGrade(5, "PGO");
         s.addGrade(2, "APBD");
-        s.displayStudentInfo();
         Student.promoteAllStudents();
         Student.displayInfoAboutAllStudents();
     }

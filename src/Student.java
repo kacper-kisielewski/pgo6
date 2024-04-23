@@ -2,9 +2,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Student {
+    private static final ArrayList<Student> students = new ArrayList<>();
     private static int studentNumberCount = 1;
     private int currentSemester = 1;
-    private ArrayList<Grade> grades = new ArrayList<Grade>();
+    private final ArrayList<Grade> grades = new ArrayList<Grade>();
     private String fname;
     private String lname;
     private String email;
@@ -14,6 +15,7 @@ public class Student {
     private String studentNumber;
     private StudyProgramme assignedProgramme;
     private String status = "kandydat";
+    private int ITNs = 0;
 
     public Student(String fname, String lname, String email, String address, String phoneNumber, Date dateOfBirth) {
         this.fname = fname;
@@ -23,6 +25,27 @@ public class Student {
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
         generateStudentNumber();
+        Student.students.add(this);
+    }
+
+    public static void promoteAllStudents() throws IllegalStateException {
+        for (Student student : students) {
+            student.promoteStudent();
+        }
+    }
+
+    public static void displayInfoAboutAllStudents() {
+        for (Student student : students) {
+            student.displayStudentInfo();
+        }
+    }
+
+    public int getITNs() {
+        return ITNs;
+    }
+
+    public void setITNs(int ITNs) {
+        this.ITNs = ITNs;
     }
 
     public String getStatus() {
@@ -37,6 +60,14 @@ public class Student {
     public void enrollStudent(StudyProgramme programme) {
         assignedProgramme = programme;
         status = "student";
+    }
+
+    public void promoteStudent() throws IllegalStateException {
+        if (ITNs > assignedProgramme.getNumberOfPossibleITNs()) {
+            throw new IllegalStateException("Cannot promote student that has more than allowed ITNs");
+        } else {
+            currentSemester++;
+        }
     }
 
     public String getFullName() {

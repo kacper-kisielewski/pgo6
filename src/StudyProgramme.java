@@ -2,6 +2,15 @@ public class StudyProgramme {
     String name;
     String description;
     private int numberOfSemesters;
+
+    public int getNumberOfPossibleITNs() {
+        return numberOfPossibleITNs;
+    }
+
+    public int getNumberOfSemesters() {
+        return numberOfSemesters;
+    }
+
     private int numberOfPossibleITNs;
 
     public StudyProgramme(String name, String description, int numberOfSemesters, int numberOfPossibleITNs) {
