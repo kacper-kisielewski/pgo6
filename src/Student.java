@@ -4,8 +4,8 @@ import java.util.Date;
 public class Student {
     private static final ArrayList<Student> students = new ArrayList<>();
     private static int studentNumberCount = 1;
-    private int currentSemester = 1;
     private final ArrayList<Grade> grades = new ArrayList<Grade>();
+    private int currentSemester = 1;
     private String fname;
     private String lname;
     private String email;
