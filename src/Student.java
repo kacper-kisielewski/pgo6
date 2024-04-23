@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 public class Student {
     private static int studentNumberCount = 1;
     private final int currentSemester = 1;
+    private final ArrayList<Grade> grades = new ArrayList<Grade>();
     private String fname;
     private String lname;
     private String email;
@@ -13,7 +13,7 @@ public class Student {
     private Date dateOfBirth;
     private String studentNumber;
     private StudyProgramme assignedProgramme;
-    private ArrayList<Subject> assignedSubjects = new ArrayList<>();
+    private String status = "kandydat";
 
     public Student(String fname, String lname, String email, String address, String phoneNumber, Date dateOfBirth) {
         this.fname = fname;
@@ -25,6 +25,9 @@ public class Student {
         generateStudentNumber();
     }
 
+    public String getStatus() {
+        return status;
+    }
 
     private void generateStudentNumber() {
         studentNumber = "s" + Student.studentNumberCount;
@@ -33,20 +36,38 @@ public class Student {
 
     public void enrollStudent(StudyProgramme programme) {
         assignedProgramme = programme;
-    }
-    private boolean isSubjectAssignedByName(String subjectName) {
-        for (Subject subject :assignedSubjects)
-            if (subject.name == subjectName)
-                return true;
-        return false;
+        status = "student";
     }
 
-    private getSubjectByName () {}
+    public String getFullName() {
+        return fname + " " + lname;
+    }
+
+    public void displayStudentInfo() {
+        System.out.println("Name: " + getFullName());
+        System.out.println("Index Number: " + studentNumber);
+        System.out.println("Programme: " + assignedProgramme.name);
+        System.out.println("Semester: " + currentSemester);
+        System.out.println("Grades: ");
+        printGrades();
+    }
+
+    public void printGrades() {
+        for (Grade grade : grades) {
+            grade.print();
+        }
+    }
+
+    public ArrayList<Grade> getGrades() {
+        return grades;
+    }
+
+    public String getStudentNumber() {
+        return studentNumber;
+    }
 
     public void addGrade(int grade, String subjectName) {
-        if (isSubjectAssignedByName(subjectName)) {
-
-        }
+        grades.add(new Grade(grade, subjectName));
     }
 
     public String getFname() {
@@ -94,8 +115,7 @@ public class Student {
     }
 
     public int getCurrentSemester() throws IllegalStateException {
-        if (assignedProgramme == null)
-            throw new IllegalStateException("Student is not in any programme");
+        if (assignedProgramme == null) throw new IllegalStateException("Student is not in any programme");
         return currentSemester;
     }
 
